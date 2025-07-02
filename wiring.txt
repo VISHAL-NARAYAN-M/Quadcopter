@@ -1,0 +1,65 @@
+# Drone Wiring Diagram (Pixhawk 4.8 Manual Control)
+# Author: Vishal Narayan M
+# Project: Manually Operated Quadcopter
+
+
+---------------------------------------
+ Power Connections
+---------------------------------------
+- LiPo Battery (3S or 4S) → Power Distribution Board (PDB)
+- Power Module (from PDB) → Pixhawk 4.8 "POWER" port
+- PDB → ESCs (Power lines for each ESC)
+
+---------------------------------------
+ Pixhawk to ESC (Motor Outputs)
+---------------------------------------
+- MAIN OUT 1 → ESC 1 → Motor 1 (Front Left - CCW)
+- MAIN OUT 2 → ESC 2 → Motor 2 (Front Right - CW)
+- MAIN OUT 3 → ESC 3 → Motor 3 (Rear Right - CCW)
+- MAIN OUT 4 → ESC 4 → Motor 4 (Rear Left - CW)
+
+---------------------------------------
+ RC Receiver to Pixhawk (SBUS/PPM)
+---------------------------------------
+- RC Receiver Signal → Pixhawk RC IN (PPM or SBUS port)
+- RC Receiver Power (5V & GND) → From PDB or BEC
+
+> Note: Ensure your RC Receiver supports SBUS or PPM
+
+---------------------------------------
+ Telemetry (Optional)
+---------------------------------------
+- Telemetry Module (e.g., 433 MHz) → Pixhawk TELEM1 port
+
+---------------------------------------
+ Optional Add-ons
+---------------------------------------
+- GPS Module → Pixhawk GPS port
+- Buzzer → Pixhawk BUZZER port
+- Safety Switch → Pixhawk SWITCH port
+- LED → Pixhawk I2C/LED port
+
+---------------------------------------
+✔ Motor Order & Directions (Quad-X Configuration)
+---------------------------------------
+        Front
+         ↑
+      1 (CCW)       2 (CW)
+           \       /
+            \     /
+             \   /
+               ● Pixhawk
+             /   \
+            /     \
+      4 (CW)       3 (CCW)
+         ↓
+        Rear
+
+---------------------------------------
+⚠ Pre-Flight Checks
+---------------------------------------
+-  RC Transmitter calibrated
+-  ESCs calibrated (via Mission Planner)
+-  Motor spin directions verified
+-  Flight modes configured (e.g., Stabilize, AltHold)
+-  Fail-safe parameters set
